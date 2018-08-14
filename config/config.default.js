@@ -1,6 +1,8 @@
 module.exports = (appInfo) => {
   const config = {};
 
+  config.middleware = [ 'requestId', 'accessLog' ];
+
   config.keys = `${appInfo.name}_development_key`;
 
   config.security = {

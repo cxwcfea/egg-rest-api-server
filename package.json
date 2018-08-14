@@ -21,7 +21,8 @@
     "egg": "^2.10.0",
     "egg-scripts": "^2.6.0",
     "md5": "^2.2.1",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "egg-bin": "^4.8.1",

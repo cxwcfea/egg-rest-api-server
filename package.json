@@ -1,0 +1,31 @@
+{
+  "name": "egg-base",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "egg-scripts start --port=5000 --daemon --title=chatbot-api-server",
+    "stop": "egg-scripts stop --title=chatbot-api-server",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "cxwcfea",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "egg": "^2.10.0",
+    "egg-scripts": "^2.6.0",
+    "md5": "^2.2.1",
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.8.1",
+    "eslint": "^5.3.0",
+    "eslint-config-egg": "^7.0.0"
+  }
+}

@@ -1,7 +1,7 @@
 module.exports = (appInfo) => {
   const config = {};
 
-  config.middleware = [ 'requestId', 'accessLog' ];
+  config.middleware = [ 'requestId', 'errorHandler', 'accessLog' ];
 
   config.keys = `${appInfo.name}_development_key`;
 
@@ -11,7 +11,7 @@ module.exports = (appInfo) => {
 
   config.onerror = {
     json(err, ctx) {
-      ctx.body = { result: err.message, errCode: err.code };
+      ctx.body = { message: err.message };
       ctx.status = err.status;
     },
   };

@@ -9,6 +9,8 @@ module.exports = (appInfo) => {
     csrf: false,
   };
 
+  config.jwtSecret = 'jwtSecret';
+
   config.sequelize = {
     database: 'egg_base',
     username: 'root',

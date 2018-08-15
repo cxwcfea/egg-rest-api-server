@@ -1,4 +1,4 @@
-const defineModel = require('../db.js');
+const { defineModel } = require('../utils.js');
 
 module.exports = (app) => {
   const { STRING, INTEGER, JSON, BIGINT } = app.Sequelize;
@@ -29,6 +29,20 @@ module.exports = (app) => {
         profile.roles = [ 'user' ];
       },
     },
+  });
+
+  /* class methods */
+  Profile.loadInfo = (id) => Profile.findOne({
+    where: {
+      id,
+    },
+  }).then((instance) => {
+    if (!instance) {
+      const error = new Error(`user ${id} not found`);
+      error.status = 404;
+      throw error;
+    }
+    return instance;
   });
 
   return Profile;

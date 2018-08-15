@@ -9,12 +9,12 @@ module.exports = () => async function errorHandler(ctx, next) {
       ? 'Internal Server Error'
       : err.message;
 
-    ctx.logger.error(`error occur for req: ${ctx.state.reqId}`);
     ctx.type = 'application/json';
     ctx.body = { message };
     if (status === 422) {
-      ctx.body.detail = err.errors;
+      ctx.body.details = err.details;
     }
     ctx.status = status;
+    ctx.logger.error(`[${ctx.state.reqId} ${ctx.status} ${JSON.stringify(ctx.body)}]`);
   }
 };

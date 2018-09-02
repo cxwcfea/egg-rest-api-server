@@ -9,6 +9,10 @@ module.exports = (appInfo) => {
     csrf: false,
   };
 
+  config.cors = {
+    origin: '*',
+  };
+
   config.jwtSecret = 'jwtSecret';
 
   config.sequelize = {

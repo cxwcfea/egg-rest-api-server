@@ -42,10 +42,16 @@ module.exports = (app) => {
     return bcrypt.compare(password, this.password);
   };
 
+  LocalAuth.associate = () => {
+    app.model.LocalAuth.belongsTo(app.model.Profile, { foreignKey: 'profile_id' });
+  };
+
   LocalAuth.prototype.generateJwt = function generateJwt() {
+    const roles = this.profile ? this.profile.roles : [ 'user' ];
     return jwt.sign({
       sub: this.profile_id,
       mobile: this.mobile,
+      roles,
       ltype: 0,
       iss: app.name,
       iat: moment().unix(),

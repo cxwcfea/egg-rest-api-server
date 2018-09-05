@@ -30,6 +30,12 @@ class AuthService extends Service {
           where: {
             mobile,
           },
+          include: [
+            {
+              model: this.ctx.model.Profile,
+              // attributes: ['head', 'nickName', 'mobile'],
+            },
+          ],
         })
         .then((user) => {
           if (!user) {

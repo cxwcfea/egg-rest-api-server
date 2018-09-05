@@ -7,4 +7,6 @@ module.exports = (app) => {
 
   router.post('/auth/register', controller.auth.register);
   router.post('/auth/login', controller.auth.login);
+
+  router.get('/api/user', auth, controller.user.getUser);
 };

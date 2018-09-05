@@ -7,7 +7,7 @@ module.exports = {
         if (err) {
           reject(new this.ctx.throw(401, 'invalid token'));
         } else {
-          resolve({ profileId: payload.sub, mobile: payload.mobile });
+          resolve({ profileId: payload.sub, mobile: payload.mobile, roles: payload.roles });
         }
       });
     });

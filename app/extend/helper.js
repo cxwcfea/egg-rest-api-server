@@ -5,7 +5,9 @@ module.exports = {
     return new Promise((resolve, reject) => {
       jwt.verify(token, this.app.config.jwtSecret, { issuer: this.app.name }, (err, payload) => {
         if (err) {
-          reject(new this.ctx.throw(401, 'invalid token'));
+          const error = new Error('invalid token or token expired');
+          error.status = 401;
+          reject(error);
         } else {
           resolve({ profileId: payload.sub, mobile: payload.mobile, roles: payload.roles });
         }

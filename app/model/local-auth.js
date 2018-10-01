@@ -6,7 +6,7 @@ const moment = require('moment');
 const { defineModel, regex } = require('../utils.js');
 
 module.exports = (app) => {
-  const { UUID, STRING } = app.Sequelize;
+  const { STRING, UUID } = app.Sequelize;
 
   const LocalAuth = defineModel(app, 'local_auth', {
     profile_id: { type: UUID },
@@ -43,7 +43,7 @@ module.exports = (app) => {
   };
 
   LocalAuth.associate = () => {
-    app.model.LocalAuth.belongsTo(app.model.Profile, { foreignKey: 'profile_id' });
+    app.model.LocalAuth.belongsTo(app.model.Profile, { targetKey: 'uuid', foreignKey: 'profile_id' });
   };
 
   LocalAuth.prototype.generateJwt = function generateJwt() {

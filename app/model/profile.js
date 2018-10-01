@@ -32,13 +32,13 @@ module.exports = (app) => {
   });
 
   /* class methods */
-  Profile.loadInfo = (id) => Profile.findOne({
+  Profile.loadInfo = (profileId) => Profile.findOne({
     where: {
-      id,
+      uuid: profileId,
     },
   }).then((instance) => {
     if (!instance) {
-      const error = new Error(`user ${id} not found`);
+      const error = new Error(`user ${profileId} not found`);
       error.status = 404;
       throw error;
     }

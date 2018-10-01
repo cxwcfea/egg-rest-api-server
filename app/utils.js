@@ -16,8 +16,14 @@ function defineModel(app, name, attributes, options) {
   });
 
   attrs.id = {
-    type: Sequelize.UUID,
+    type: Sequelize.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
+  };
+
+  attrs.uuid = {
+    type: Sequelize.UUID,
+    unique: true,
     defaultValue: Sequelize.UUIDV4,
   };
 

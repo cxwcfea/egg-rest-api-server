@@ -5,7 +5,7 @@ class AuthService extends Service {
     return new Promise((resolve, reject) => {
       this.ctx.model.transaction((t) => {
         const profile = this.ctx.model.Profile.build({ name: mobile, mobile, status: 1 });
-        const user = this.ctx.model.LocalAuth.build({ mobile, password, profile_id: profile.id });
+        const user = this.ctx.model.LocalAuth.build({ mobile, password, profile_id: profile.uuid });
         return Promise.all([
           user.save({ transaction: t }),
           profile.save({ transaction: t }),

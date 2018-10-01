@@ -39,13 +39,13 @@ class AuthService extends Service {
         })
         .then((user) => {
           if (!user) {
-            this.ctx.throw(401, 'user not found');
+            this.ctx.throw(400, 'user not found');
           }
           return Promise.all([ user.authenticate(password), user ]);
         })
         .then((result) => {
           if (!result[0]) {
-            this.ctx.throw(401, 'incorrect password');
+            this.ctx.throw(400, 'incorrect password');
           }
           resolve(result[1].generateJwt());
         })
